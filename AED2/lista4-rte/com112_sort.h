@@ -1,0 +1,10 @@
+#ifndef COM112_SORT_H
+#define COM112_SORT_H
+
+
+int* bubbleSort(int arr[]);
+int* selectionSort(int arr[]);
+int* insertionSort(int arr[]);
+
+
+#endif
