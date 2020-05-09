@@ -3,7 +3,7 @@
 #include "com112_file.h"
 #include "com112_sort.h"
 #include <stdbool.h>
-#include<time.h>
+#include <time.h>
 
 void waiter()
 {
@@ -16,9 +16,9 @@ void waiter()
     }
 }
 
-int* menu(int vet[])
+int *menu(int vet[])
 {
-    int op,tempo1,tempo2;
+    int op, tempo1, tempo2;
     while ((op != 1) && (op != 2) && (op != 3))
     {
         printf("\e[H\e[2J");
@@ -34,31 +34,33 @@ int* menu(int vet[])
         scanf("%d", &op);
         int *v;
         if (op == 1)
-        {   
+        {
             tempo1 = clock();
             v = bubbleSort(vet);
             tempo2 = clock();
             int quantidade = v[0];
-            v[quantidade+4] = ("%f",(tempo2-tempo1)/1000.0)*100000000;
+            v[quantidade + 7] = ("%f", (tempo2 - tempo1) / 1000.0) * 100000000;
             printf("\nVetor ordenado através do BubbleSort!\n");
             return v;
         }
-        else if (op == 2){
+        else if (op == 2)
+        {
             tempo1 = clock();
             v = selectionSort(vet);
             tempo2 = clock();
             printf("\nVetor ordenado através do SelectionSort!\n");
             int quantidade = v[0];
-            v[quantidade+4] = ("%f",(tempo2-tempo1)/1000.0)*100000000;
+            v[quantidade + 8] = ("%f", (tempo2 - tempo1) / 1000.0) * 100000000;
             return v;
         }
-        else if (op == 3){
+        else if (op == 3)
+        {
             tempo1 = clock();
             v = insertionSort(vet);
             tempo2 = clock();
             printf("\nVetor ordenado através do InsertionSort!\n");
             int quantidade = v[0];
-            v[quantidade+4] = ("%f",(tempo2-tempo1)/1000.0)*100000000;
+            v[quantidade + 9] = ("%f", (tempo2 - tempo1) / 1000.0) * 100000000;
             return v;
         }
     }
@@ -91,7 +93,8 @@ void relatorio()
 int main()
 {
     int op, i;
-
+    int *vetor;
+    int cont = 0;
     while (op != 4)
     {
         printf("\e[H\e[2J");
@@ -103,6 +106,7 @@ int main()
         printf("                    =         2 - Relatorio                =\n");
         printf("                    =         3 - Gerar Numeros            =\n");
         printf("                    =         4 - Sair                     =\n");
+        printf("                    =         5 - Creditos                 =\n");
         printf("                    =                                      =\n");
         printf("                    ========================================\n");
         printf("\n");
@@ -112,13 +116,16 @@ int main()
 
         if (op == 1)
         {
-            int *vetor;
-            vetor = lerArquivoEntrada();
 
+            if (cont == 0)
+            {
+                vetor = lerArquivoEntrada();
+                cont++;
+            }
             int *result;
             result = menu(vetor);
             bool result_of_archive = abrirArquivoSaida(result, result[0]);
-            for (i = 1; i < result[0] +1; i++)
+            for (i = 1; i < result[0] + 1; i++)
             {
                 printf("%d ", result[i]);
             }
@@ -133,7 +140,6 @@ int main()
             }
 
             result_of_archive = escreverArquivoRelatorio(result);
-            
 
             waiter();
         }
@@ -180,6 +186,18 @@ int main()
 
             waiter();
             free(vet);
+        }
+        else if (op == 5)
+        {
+            printf("\e[H\e[2J");
+            printf("                    ==========Creditos======================\n");
+            printf("                    =                                      =\n");
+            printf("                    =                                      =\n");
+            printf("                    =         Marcelo Magalhaes Silva      =\n");
+            printf("                    =         2020004243                   =\n");
+            printf("                    =         COM112                       =\n");
+            printf("                    ========================================\n");
+            waiter();
         }
     }
 

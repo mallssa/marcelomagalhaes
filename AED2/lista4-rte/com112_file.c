@@ -77,7 +77,7 @@ int *lerArquivoEntrada()
             {
                 fscanf(arquivo, "%d", &quant);
                 cont++;
-                vet = malloc((quant + 5) * sizeof(int));
+                vet = malloc((quant + 10) * sizeof(int));
                 vet[0] = quant;
             }
             else
@@ -108,21 +108,22 @@ bool escreverArquivoRelatorio(int var[])
     }
     else
     {
+        
         int q = var[0];
         fprintf(arquivo,"                    ==================================================\n");
         fprintf(arquivo,"                    =      Numero de elementos ordenados: %d         =\n",var[0]);
         fprintf(arquivo,"                    =      Metodo Bubble Sort                        =\n");
-        fprintf(arquivo,"                    =          Tempo de execucão: %f                 =\n",(var[q+4])/100000000.0);
+        fprintf(arquivo,"                    =          Tempo de execucão: %f                 =\n",(var[q+7])/100000000.0);
         fprintf(arquivo,"                    =          Numero de comparacoes %d              =\n",var[q+1]);
         fprintf(arquivo,"                    =          Numero de movimentacoes: %d           =\n",var[q+2]);
         fprintf(arquivo,"                    =      Metodo Selection Sort                     =\n");
-        fprintf(arquivo,"                    =          Tempo de execucão: 250s               =\n");
-        fprintf(arquivo,"                    =          Numero de comparacoes 34              =\n");
-        fprintf(arquivo,"                    =          Numero de movimentacoes: 55           =\n");
+        fprintf(arquivo,"                    =          Tempo de execucão: %f                 =\n",(var[q+8])/100000000.0);
+        fprintf(arquivo,"                    =          Numero de comparacoes %d              =\n",var[q+3]);
+        fprintf(arquivo,"                    =          Numero de movimentacoes: %d           =\n",var[q+4]);
         fprintf(arquivo,"                    =      Metodo Insertion Sort                     =\n");
-        fprintf(arquivo,"                    =          Tempo de execucão: 250s               =\n");
-        fprintf(arquivo,"                    =          Numero de comparacoes 34              =\n");
-        fprintf(arquivo,"                    =          Numero de movimentacoes: 55           =\n");
+        fprintf(arquivo,"                    =          Tempo de execucão: %f                 =\n",(var[q+9])/100000000.0);
+        fprintf(arquivo,"                    =          Numero de comparacoes %d              =\n",var[q+5]);
+        fprintf(arquivo,"                    =          Numero de movimentacoes: %d           =\n",var[q+6]);
         fprintf(arquivo,"                    ==================================================\n");
 
         fclose(arquivo);
@@ -144,12 +145,13 @@ void lerArquivoRelatorio()
     }
     else
     {
-        char linha[50];
         
+        size_t t = 50;
+        char* linha=malloc(t);
         printf("Arquivo aberto com sucesso!\n");
         while (!feof(arquivo))
         {
-            fscanf(arquivo, "%c", &linha);
+            getline(&linha, &t, arquivo);
             printf("%s",linha);
         }
         

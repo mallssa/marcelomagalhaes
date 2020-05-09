@@ -19,7 +19,7 @@ int* bubbleSort(int arr[])
         }
     arr[n+1] = compara;
     arr[n+2] = trocas;
-    arr[n+3] = 1;
+    
     return arr;
 }
 
@@ -44,9 +44,9 @@ int* selectionSort(int arr[])
         arr[min_idx] = arr[i];
         arr[i] = aux;
     }
-    arr[n+1] = compara;
-    arr[n+2] = trocas;
-    arr[n+3] = 2;
+    arr[n+3] = compara;
+    arr[n+4] = trocas;
+   
     return arr;
 }
 
@@ -72,8 +72,8 @@ int* insertionSort(int arr[])
         trocas++;
         arr[j + 1] = key;
     }
-    arr[n+1] = compara;
-    arr[n+2] = trocas;
-    arr[n+3] = 3;
+    arr[n+5] = compara;
+    arr[n+6] = trocas;
+    
     return arr;
 }

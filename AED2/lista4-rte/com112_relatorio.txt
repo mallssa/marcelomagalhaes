@@ -1,15 +1,15 @@
                     ==================================================
-                    =      Numero de elementos ordenados: 5         =
+                    =      Numero de elementos ordenados: 25         =
                     =      Metodo Bubble Sort                        =
-                    =          Tempo de execucão: 0.003000                 =
-                    =          Numero de comparacoes 10              =
-                    =          Numero de movimentacoes: 3           =
+                    =          Tempo de execucão: 0.012000                 =
+                    =          Numero de comparacoes 915              =
+                    =          Numero de movimentacoes: 163           =
                     =      Metodo Selection Sort                     =
-                    =          Tempo de execucão: 250s               =
-                    =          Numero de comparacoes 34              =
-                    =          Numero de movimentacoes: 55           =
+                    =          Tempo de execucão: 0.004000                 =
+                    =          Numero de comparacoes 300              =
+                    =          Numero de movimentacoes: 24           =
                     =      Metodo Insertion Sort                     =
-                    =          Tempo de execucão: 250s               =
-                    =          Numero de comparacoes 34              =
-                    =          Numero de movimentacoes: 55           =
+                    =          Tempo de execucão: 0.002000                 =
+                    =          Numero de comparacoes 0              =
+                    =          Numero de movimentacoes: 24           =
                     ==================================================
