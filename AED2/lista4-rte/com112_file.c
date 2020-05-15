@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "com112_file.h"
-bool abrirArquivoEntrada(int var[], int quantidade)
+void abrirArquivoEntrada(int var[], int quantidade)
 {
     FILE *arquivo;
     int i;
@@ -11,7 +11,7 @@ bool abrirArquivoEntrada(int var[], int quantidade)
     if (arquivo == NULL)
     {
         printf("ERRO AO ABRIR ARQUIVO!");
-        return false;
+        
     }
     else
     {
@@ -23,11 +23,11 @@ bool abrirArquivoEntrada(int var[], int quantidade)
         }
 
         fclose(arquivo);
-        return true;
+        
     }
 }
 
-bool abrirArquivoSaida(int var[], int quantidade)
+void abrirArquivoSaida(int var[], int quantidade)
 {
     FILE *arquivo;
     int i;
@@ -36,7 +36,7 @@ bool abrirArquivoSaida(int var[], int quantidade)
     if (arquivo == NULL)
     {
         printf("ERRO AO ABRIR ARQUIVO!");
-        return false;
+        
     }
     else
     {
@@ -48,7 +48,7 @@ bool abrirArquivoSaida(int var[], int quantidade)
         }
 
         fclose(arquivo);
-        return true;
+        
     }
 }
 
@@ -77,7 +77,7 @@ int *lerArquivoEntrada()
             {
                 fscanf(arquivo, "%d", &quant);
                 cont++;
-                vet = malloc((quant + 10) * sizeof(int));
+                vet = malloc((quant + 13) * sizeof(int));
                 vet[0] = quant;
             }
             else
@@ -95,7 +95,7 @@ int *lerArquivoEntrada()
     }
 }
 
-bool escreverArquivoRelatorio(int var[])
+void escreverArquivoRelatorio(int var[])
 {
     FILE *arquivo;
     int i;
@@ -104,30 +104,33 @@ bool escreverArquivoRelatorio(int var[])
     if (arquivo == NULL)
     {
         printf("ERRO AO ABRIR ARQUIVO!");
-        return false;
+        
     }
     else
     {
         
         int q = var[0];
-        fprintf(arquivo,"                    ==================================================\n");
-        fprintf(arquivo,"                    =      Numero de elementos ordenados: %d         =\n",var[0]);
-        fprintf(arquivo,"                    =      Metodo Bubble Sort                        =\n");
-        fprintf(arquivo,"                    =          Tempo de execucão: %f                 =\n",(var[q+7])/100000000.0);
-        fprintf(arquivo,"                    =          Numero de comparacoes %d              =\n",var[q+1]);
-        fprintf(arquivo,"                    =          Numero de movimentacoes: %d           =\n",var[q+2]);
-        fprintf(arquivo,"                    =      Metodo Selection Sort                     =\n");
-        fprintf(arquivo,"                    =          Tempo de execucão: %f                 =\n",(var[q+8])/100000000.0);
-        fprintf(arquivo,"                    =          Numero de comparacoes %d              =\n",var[q+3]);
-        fprintf(arquivo,"                    =          Numero de movimentacoes: %d           =\n",var[q+4]);
-        fprintf(arquivo,"                    =      Metodo Insertion Sort                     =\n");
-        fprintf(arquivo,"                    =          Tempo de execucão: %f                 =\n",(var[q+9])/100000000.0);
-        fprintf(arquivo,"                    =          Numero de comparacoes %d              =\n",var[q+5]);
-        fprintf(arquivo,"                    =          Numero de movimentacoes: %d           =\n",var[q+6]);
-        fprintf(arquivo,"                    ==================================================\n");
+        fprintf(arquivo,"Numero de elementos ordenados: %d\n",var[0]);
+        fprintf(arquivo,"Metodo Bubble Sort               \n");
+        fprintf(arquivo,"    Tempo de execucão: %f        \n",(var[q+7])/100000000.0);
+        fprintf(arquivo,"    Numero de comparacoes %d     \n",var[q+1]);
+        fprintf(arquivo,"    Numero de movimentacoes: %d  \n",var[q+2]);
+        fprintf(arquivo,"Metodo Selection Sort            \n");
+        fprintf(arquivo,"    Tempo de execucão: %f        \n",(var[q+8])/100000000.0);
+        fprintf(arquivo,"    Numero de comparacoes %d     \n",var[q+3]);
+        fprintf(arquivo,"    Numero de movimentacoes: %d  \n",var[q+4]);
+        fprintf(arquivo,"Metodo Insertion Sort            \n");
+        fprintf(arquivo,"    Tempo de execucão: %f        \n",(var[q+9])/100000000.0);
+        fprintf(arquivo,"    Numero de comparacoes %d     \n",var[q+5]);
+        fprintf(arquivo,"    Numero de movimentacoes: %d  \n",var[q+6]);
+        fprintf(arquivo,"Metodo Insertion Sort            \n");
+        fprintf(arquivo,"    Tempo de execucão: %f        \n",(var[q+12])/100000000.0);
+        fprintf(arquivo,"    Numero de comparacoes %d     \n",var[q+10]);
+        fprintf(arquivo,"    Numero de movimentacoes: %d  \n",var[q+11]);
+
 
         fclose(arquivo);
-        return true;
+        
     }
 }
 

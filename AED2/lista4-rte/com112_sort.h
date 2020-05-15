@@ -5,6 +5,6 @@
 int* bubbleSort(int arr[]);
 int* selectionSort(int arr[]);
 int* insertionSort(int arr[]);
-
+int* mergeSort(int arr[],int l,int r);
 
 #endif
