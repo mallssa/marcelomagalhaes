@@ -77,7 +77,7 @@ int *lerArquivoEntrada()
             {
                 fscanf(arquivo, "%d", &quant);
                 cont++;
-                vet = malloc((quant + 13) * sizeof(int));
+                vet = malloc((quant + 16) * sizeof(int));
                 vet[0] = quant;
             }
             else
@@ -89,6 +89,9 @@ int *lerArquivoEntrada()
                     //printf("%d ", vet[i]);
                 }
             }
+        }
+        for(i=quant+1;i<quant+16;i++){
+            vet[i] = 0;
         }
         return vet;
         fclose(arquivo);
@@ -123,10 +126,14 @@ void escreverArquivoRelatorio(int var[])
         fprintf(arquivo,"    Tempo de execucão: %f        \n",(var[q+9])/100000000.0);
         fprintf(arquivo,"    Numero de comparacoes %d     \n",var[q+5]);
         fprintf(arquivo,"    Numero de movimentacoes: %d  \n",var[q+6]);
-        fprintf(arquivo,"Metodo Insertion Sort            \n");
+        fprintf(arquivo,"Metodo Merge Sort            \n");
         fprintf(arquivo,"    Tempo de execucão: %f        \n",(var[q+12])/100000000.0);
         fprintf(arquivo,"    Numero de comparacoes %d     \n",var[q+10]);
         fprintf(arquivo,"    Numero de movimentacoes: %d  \n",var[q+11]);
+        fprintf(arquivo,"Metodo Quick Sort            \n");
+        fprintf(arquivo,"    Tempo de execucão: %f        \n",(var[q+13])/100000000.0);
+        fprintf(arquivo,"    Numero de comparacoes %d     \n",var[q+14]);
+        fprintf(arquivo,"    Numero de movimentacoes: %d  \n",var[q+15]);
 
 
         fclose(arquivo);

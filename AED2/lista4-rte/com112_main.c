@@ -32,10 +32,14 @@ void relatorio(int var[])
     printf("    Tempo de execucão: %f        \n", (var[q + 9]) / 100000.0);
     printf("    Numero de comparacoes %d     \n", var[q + 5]);
     printf("    Numero de movimentacoes: %d  \n", var[q + 6]);
-    printf("Metodo Insertion Sort            \n");
+    printf("Metodo Merge Sort            \n");
     printf("    Tempo de execucão: %f        \n", (var[q + 12]) / 100000.0);
     printf("    Numero de comparacoes %d     \n", var[q + 10]);
     printf("    Numero de movimentacoes: %d  \n", var[q + 11]);
+    printf("Metodo Quick Sort            \n");
+    printf("    Tempo de execucão: %f        \n", (var[q + 13]) / 100000.0);
+    printf("    Numero de comparacoes %d     \n", var[q + 14]);
+    printf("    Numero de movimentacoes: %d  \n", var[q + 15]);
     
     escreverArquivoRelatorio(var);
 
@@ -60,7 +64,7 @@ int* menu(int vet[])
     quantidade = vet[0];
     vet[quantidade + 10] = 0;
     vet[quantidade + 11] = 0;
-    while ((op != 1) && (op != 2) && (op != 3) && (op != 4) && (op != 5))
+    while ((op != 1) && (op != 2) && (op != 3) && (op != 4) && (op != 5) && (op != 6))
     {
         printf("\e[H\e[2J");
         printf("\n\n\n\n\n");
@@ -69,11 +73,13 @@ int* menu(int vet[])
         printf("                    =         2 - Selection Sort           =\n");
         printf("                    =         3 - Insertion Sort           =\n");
         printf("                    =         4 - Merge Sort               =\n");
-        printf("                    =         5 - Relatorio                =\n");
+        printf("                    =         5 - Quick Sort               =\n");
+        printf("                    =         6 - Relatorio                =\n");
         printf("                    ========================================\n");
         printf("\n");
 
         printf("              Entre com a opcao desejada (Digite o numero da opcao): ");
+        
         scanf("%d", &op);
         
         switch (op)
@@ -116,6 +122,15 @@ int* menu(int vet[])
             break;
         case 5:
             tempo1 = clock();
+            v = quickSort(vet,0,vet[0]-1);
+            tempo2 = clock();
+            printf("\nVetor ordenado através do Quick Sort!\n");
+            quantidade = v[0];
+            v[quantidade+13] = calculaTempo(tempo1,tempo2);
+            showVector(v);
+            break;
+        case 6:
+            tempo1 = clock();
             v = bubbleSort(vet);
             tempo2 = clock();
             v[quantidade + 7] = calculaTempo(tempo1,tempo2);
@@ -131,6 +146,11 @@ int* menu(int vet[])
             v = mergeSort(vet, 1, vet[0] - 1);
             tempo2 = clock();
             v[quantidade + 12] = calculaTempo(tempo1,tempo2);
+            tempo1 = clock();
+            v = quickSort(vet,0,vet[0]-1);
+            tempo2 = clock();
+            quantidade = v[0];
+            v[quantidade+13] = calculaTempo(tempo1,tempo2);
             showVector(v);
             relatorio(vet);
             break;
@@ -169,7 +189,8 @@ int main()
                 vetor = lerArquivoEntrada();
                 cont++;
             }
-            int *result = menu(vetor);;
+            int* result = menu(vetor);
+            
             
             printf("\n\n");
             abrirArquivoSaida(result, result[0]);
@@ -206,6 +227,7 @@ int main()
 
             waiter();
             free(vet);
+            cont = 0;
         }
         else if (op == 3)
         {
